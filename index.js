@@ -1,12 +1,14 @@
-const jsonServer = require("json-server"); // importing json-server library
+const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router1 = jsonServer.router("db.json");
-const router2 = jsonServer.router("intents.json");
+const router = jsonServer.router("db.json"); // First JSON file
+const router2 = jsonServer.router("db2.json"); // Second JSON file
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 8080; //  chose port from here like 8080, 3001
+const port = process.env.PORT || 8080;
 
 server.use(middlewares);
-server.use(router1);
-server.use(router2);
+server.use("/data", router); // Route for the first JSON file
+server.use("/inte", router2); // Route for the second JSON file
 
-server.listen(port);
+server.listen(port, () => {
+  console.log(`JSON Server is running on port ${port}`);
+});
