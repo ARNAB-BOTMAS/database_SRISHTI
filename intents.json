@@ -317,6 +317,16 @@
         "responses": [
           "code"
         ]
+      },
+      {
+        "tag": "log",
+        "patterns": [
+          "log out",
+          "log"
+        ],
+        "responses": [
+          "log out"
+        ]
       }
     ]
   }
